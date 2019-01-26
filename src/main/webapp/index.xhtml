@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+	<h:form>
+		<h:outputText value="Cadastro de Funcionários"></h:outputText>
+		<h:panelGrid columns="2">
+			<h:outputText value="Nome" />
+			<h:inputText value="#{funcionarioMB.funcionario.nome}" />
+			<h:outputText value="Idade" />
+			<h:inputText value="#{funcionarioMB.funcionario.idade}" />
+			<h:outputText value="Salário" />
+			<h:inputText value="#{funcionarioMB.funcionario.salario}">
+				<f:convertNumber pattern="#0.00"  locale="pt" />
+			</h:inputText>
+			<h:outputText value="Nascimento" />
+			<h:inputText value="#{funcionarioMB.funcionario.nascimento}">
+				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt" />
+			</h:inputText>
+			<h:commandButton value="salvar" action="#{funcionarioMB.Salvar()}" />
+		</h:panelGrid>
+
+
+		<h:dataTable value="#{funcionarioMB.funcionarios}" var="funcionario" border="1">
+			<h:column>
+				<h:outputText value="#{funcionario.nome}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{funcionario.idade}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{funcionario.salario}">
+					<f:convertNumber patter="#0.00" currencySymbol="$" locale="pt" /> 
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{funcionario.nascimento}">
+					 <f:convertDateTime pattern="dd/MM/yyyy"  locale="pt" /> 
+				</h:outputText>
+			</h:column>			
+		</h:dataTable>
+	</h:form>
+</h:body>
+
+</html>
